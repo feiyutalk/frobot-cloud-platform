@@ -6,7 +6,7 @@
 - **worker**: 任务执行者，接受master传送过来的任务，然后执行结果。
 - **registry**: 地址注册中心，记录可用的master地址，并按照负载均衡算法将worker分配给指定的master。
 
-##系统架构
+## 系统架构
 
 ![](./docs/system/Frobot系统架构图-0.2.png)
 
