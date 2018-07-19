@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectConfig 
+    userName="ices"
+    projectName="sinaNews"
+    projectSimpleName="simple_spider"
+    personalProjectEngine="true"
+    projectJarName="spider"
+	projectEngineClassWithPackageName="org.iceslab.spider.SpiderProjectEngine"
+	startType="0"
+	startDelayTime="10">
+	<task 
+	    taskName="crawlingInformation" 
+	    workerNum="2"
+	    taskSimpleName="crawling"
+		taskJarName="spiderCrawling"
+		taskEngineClassWithPackageName="org.iceslab.spider.CrawlingTaskEngine">
+		<dependency existDependency="false">nodepend</dependency>
+		<taskConfigName>crawlingInformationTaskConfig</taskConfigName>
+		<taskDataName>crawlingInformationData</taskDataName>
+	</task>
+	<task 
+	    taskName="extractInformation" 
+	    workerNum="2" 
+	    taskSimpleName="extract"
+	    taskJarName="spiderExtract"
+	    taskEngineClassWithPackageName="org.iceslab.spider.ExtractTaskEngine">
+		<dependency existDependency="true">crawlingInformation</dependency>
+		<taskConfigName>extractInformationTaskConfig</taskConfigName>
+	</task>
+	<task 
+	    taskName="integrateInformation" 
+	    workerNum="2"
+	    taskSimpleName="integrate"
+		taskJarName="spiderIntegrate"
+		taskEngineClassWithPackageName="org.iceslab.spider.IntegrateTaskEngine">
+		<dependency existDependency="true">extractInformation</dependency>
+		<taskConfigName>integrateInformationTaskConfig</taskConfigName>
+	</task>
+</projectConfig>
